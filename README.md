@@ -24,6 +24,12 @@ Timber lets you use your theme's `.php` files for code, and handle all markup in
 
 ACF is mentioned in every second sentence on Wordpress development, and lots of themes and plugins mention they _play nicely_ with it. I still need to study it a bit to get what the fuss is about :-)
 
+### [Shortcake](https://wordpress.org/plugins/shortcode-ui/)
+
+> Shortcake makes using WordPress shortcodes a piece of cake. 
+
+This provides an UI for adding shortcodes, hasn't been updated for a while but looks good.
+
 ## Starter Themes
 
 ### [\_s](https://github.com/Automattic/_s)
