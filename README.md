@@ -36,6 +36,18 @@ This provides an UI for adding shortcodes, hasn't been updated for a while but l
 
 This pretty much worked out of the box for minifying CSS/JS and for caching website content on the disk, making the website much faster.
 
+#### [Post Types Order](https://wordpress.org/plugins/post-types-order/)
+
+>  Post Order and custom Post Type Objects (custom post types) using a Drag and Drop Sortable JavaScript AJAX interface or default WordPress dashboard. 
+
+Until Wordpress makes it easier to order posts of the same type (right now we're stuck with the Order input field on each post), this plugin helps order them with a simple drag & drop interface.
+
+#### [Facebook Open Graph, Google+ and Twitter Card Tags](https://wordpress.org/plugins/wonderm00ns-simple-facebook-open-graph-tags/)
+
+> Inserts Facebook Open Graph, Google+/Schema.org, Twitter and SEO Meta Tags into your WordPress Website for more efficient sharing results. 
+
+Although people seem to be using [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) for this purpose, I appreciated that this plugin worked out of the box with decent results.
+
 ### Starter Themes
 
 #### [\_s](https://github.com/Automattic/_s)
