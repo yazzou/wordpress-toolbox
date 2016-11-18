@@ -30,6 +30,12 @@ ACF is mentioned in every second sentence on Wordpress development, and lots of 
 
 This provides an UI for adding shortcodes, hasn't been updated for a while but looks good.
 
+#### [W3 Total Cache](https://wordpress.org/plugins/w3-total-cache/)
+
+> W3 Total Cache improves the user experience of your site by increasing website performance, reducing download times via features like content delivery network (CDN) integration.
+
+This pretty much worked out of the box for minifying CSS/JS and for caching website content on the disk, making the website much faster.
+
 ### Starter Themes
 
 #### [\_s](https://github.com/Automattic/_s)
