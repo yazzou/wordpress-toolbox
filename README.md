@@ -1,8 +1,15 @@
 # Wordpress Toolbox
 
-Wordpress tips/tricks/tools I'm gathering along the way while learning how to use it.
+This is a compendium of Wordpress tips, tricks, tools and recipes I'm gathering while I'm learning how to use it. Also check out [the Wiki](https://github.com/danburzo/wordpress-toolbox/wiki), which acts as a purgatory for half-formed ideas before they make it here.
 
-### Plugins
+## Table of Contents
+
+* [Plugins](#plugins)
+* [Starter themes](#starter-themes)
+* [Recipes](#recipes)
+* [Resources](#resources)
+
+## Plugins
 
 #### [Query Monitor](https://wordpress.org/plugins/query-monitor/)
 
@@ -48,7 +55,7 @@ Until Wordpress makes it easier to order posts of the same type (right now we're
 
 Although people seem to be using [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) for this purpose, I appreciated that this plugin worked out of the box with decent results.
 
-### Starter Themes
+## Starter Themes
 
 #### [\_s](https://github.com/Automattic/_s)
 
@@ -58,9 +65,49 @@ I love this idea of ["A 1000-Hour Head Start"](http://themeshaper.com/2012/02/13
 
 #### [Timber Starter Theme](https://github.com/timber/starter-theme)
 
-It's the `_s` of Timber-land. 
+It's the `_s` of Timber-driven themes and it has all the things to get you hacking right away. 
 
-### Resources
+## Recipes
+
+#### Changing the number of posts per page
+
+In the example below, we're overriding the number of posts to show on an archive page for all custom post types (CPTs). The default is 10. This goes into `functions.php`:
+
+```php
+add_action( 'pre_get_posts', 'configure_posts_per_page' );
+
+function configure_posts_per_page($query) {
+    // Don't alter queries in the admin interface
+    // and don't alter any query that's not the main one
+    if ($query->is_admin() || !$query->is_main_query()) {
+        return;
+    } 
+    // For custom post type based archives, override the number of posts per page
+    if ($query->is_post_type_archive()) {
+        $query->set('posts_per_archive_page', 12);
+    }
+}
+```
+
+A couple of things to be mindful about: we only alter queries that happen on the user-facing interface (we check for `is_admin()` and return early), and only on the main query (the check for `is_main_query()`), because the [`pre_get_posts` hook](https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts) gets triggered for _all_ the queries happening for the request and not doing these checks might have unintended consequences, like breaking the pagination in the admin interface, or hindering performance.
+
+#### Laying out posts in a grid using Twig
+
+If you're using Timber to develop your theme, you can use the [`batch` filter](http://twig.sensiolabs.org/doc/filters/batch.html) in Twig to elegantly lay out posts in a grid. In the example below, we're writing markup for a three-column grid layout:
+
+```twig
+{% for row in posts | batch(3) %}
+  <div class='row'>
+  {% for post in row %}
+    <div class='col'>
+      ...your post here...
+    </div>
+  {% endfor %}
+  </div>
+{% endfor %}
+```
+
+## Resources
 
 #### [The WordPress Template Hierarchy](https://wphierarchy.com/)
 
