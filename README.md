@@ -79,7 +79,7 @@ add_action( 'pre_get_posts', 'configure_posts_per_page' );
 function configure_posts_per_page($query) {
     // Don't alter queries in the admin interface
     // and don't alter any query that's not the main one
-    if ($query->is_admin() || !$query->is_main_query()) {
+    if (is_admin() || !$query->is_main_query()) {
         return;
     } 
     // For custom post type based archives, override the number of posts per page
@@ -89,7 +89,7 @@ function configure_posts_per_page($query) {
 }
 ```
 
-A couple of things to be mindful about: we only alter queries that happen on the user-facing interface (we check for `is_admin()` and return early), and only on the main query (the check for `is_main_query()`), because the [`pre_get_posts` hook](https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts) gets triggered for _all_ the queries happening for the request and not doing these checks might have unintended consequences, like breaking the pagination in the admin interface, or hindering performance.
+A couple of things to be mindful about: we only alter queries that happen on the user-facing interface (we check for `is_admin()` and return early), and only on the main query (the check for `$query->is_main_query()`), because the [`pre_get_posts` hook](https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts) gets triggered for _all_ the queries happening for the request and not doing these checks might have unintended consequences, like breaking the pagination in the admin interface, or hindering performance.
 
 #### Laying out posts in a grid using Twig
 
