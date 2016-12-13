@@ -91,6 +91,31 @@ function configure_posts_per_page($query) {
 
 A couple of things to be mindful about: we only alter queries that happen on the user-facing interface (we check for `is_admin()` and return early), and only on the main query (the check for `$query->is_main_query()`), because the [`pre_get_posts` hook](https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts) gets triggered for _all_ the queries happening for the request and not doing these checks might have unintended consequences, like breaking the pagination in the admin interface, or hindering performance.
 
+#### Showing only top-level posts for a hierarchical custom post type archive page
+
+If you've created a custom post type that allows nesting — that is, your posts can have a parent (of the same post type) — and you want to only display the top-level posts on its archive page, you can use the [`pre_get_posts` hook](https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts) to filter out posts that have a parent:
+
+```php
+function configure_get_posts($query) {
+
+    // Don't alter queries in the admin interface
+    // and don't alter any query that's not the main one
+    if (is_admin() || !$query->is_main_query()) {
+        return;
+    } 
+
+    // For custom post type based archives
+    if ($query->is_post_type_archive()) {
+        // Only show top-level posts
+        if ($query->query_vars['post_parent'] == false) {
+            $query->set('post_parent', 0);
+        }
+    }
+}
+```
+
+__Note:__ All the caveats from the previous tip apply here as well.
+
 #### Laying out posts in a grid using Twig
 
 If you're using Timber to develop your theme, you can use the [`batch` filter](http://twig.sensiolabs.org/doc/filters/batch.html) in Twig to elegantly lay out posts in a grid. In the example below, we're writing markup for a three-column grid layout:
@@ -106,6 +131,10 @@ If you're using Timber to develop your theme, you can use the [`batch` filter](h
   </div>
 {% endfor %}
 ```
+
+#### Using different languages for the website's front-end and the administration dashboard
+
+Previously, you'd do this via hacks, but [starting from Wordpress 4.7](https://wordpress.org/news/2016/12/vaughan/) you can set the language for the dashboard independently from the website language by going to your _Profile_ settings in the administration interface.
 
 ## Resources
 
