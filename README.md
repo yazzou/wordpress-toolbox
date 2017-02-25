@@ -167,7 +167,19 @@ This is a useful visualization of how [Wordpress decides which template to use](
 
 #### You can't nest pages of a type under pages of another type
 
-Bummeriño :(
+In order to _nest custom post types_, you need to declare them as hierarchical. Custom post types can only be nested inside _posts of the same type_ (bummer!)
+
+#### Hierarchical post types can't have all-numerical slugs
+
+If a post type is hierarchical, you will [not be able to set an all-numerical slug](http://wordpress.stackexchange.com/questions/186126/numeric-slug-on-child-post) for it, since it will conflict with checks for pagination.
+
+#### Sorting things kinda sucks
+
+The order of pages (and other post types that support _page-attributes_) can only be changed from a numerical input in the _Edit page_ screen. This makes it almost useless in managing more than a handful of pages. 
+
+Plugins exist that allow you to rearrange the pages, but some of them don't support _hierarchical_ post types, or they charge for it. 
+
+This is, I think, a basic functionality that belongs to Wordpress Core.
 
 #### You can't use a shortcode inside itself
 
