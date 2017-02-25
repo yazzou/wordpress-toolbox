@@ -8,6 +8,8 @@ This is a compendium of Wordpress tips, tricks, tools and recipes I'm gathering 
 * [Starter themes](#starter-themes)
 * [Recipes](#recipes)
 * [Resources](#resources)
+* [Wordpress limitations about which I found the hard way](#wordpress-limitations-about-which-i-found-the-hard-way)
+* [Miscellaneous Tips](#miscellaneous-tips)
 
 ## Plugins
 
@@ -179,7 +181,7 @@ For example, if you were to build a layout system using shortcodes, you could no
 [/row]
 ```
 
-The workaround, as far as I can tell now, is to register the same shortcode under different names.
+For the reason, see the _Limitations_ section of [the Shortcode API](https://codex.wordpress.org/Shortcode_API). The workaround, as far as I can tell now, is to register the same shortcode under different names.
 
 #### `wpautop` will mess up your shortcodes
 
