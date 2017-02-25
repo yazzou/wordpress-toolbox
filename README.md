@@ -66,6 +66,7 @@ Name | WP Plugin | GitHub repo | Notes
 [Beaver Builder](https://www.wpbeaverbuilder.com/) | [beaver-builder-lite-version](https://wordpress.org/plugins/beaver-builder-lite-version/) | N/A | Free and paid versions.
 [Visual Composer](https://vc.wpbakery.com/) | N/A | N/A | Paid-only. #1 paid plugin on CodeCanyon.
 [Advanced Custom Fields](https://www.advancedcustomfields.com/) | [advanced-custom-fields](https://wordpress.org/plugins/advanced-custom-fields/) | N/A | Free and paid versions. The paid versions contains a _Flexible content_ field that can be used as a page builder.
+[Live Composer](https://livecomposerplugin.com/) | [live-composer-page-builder](https://wordpress.org/plugins/live-composer-page-builder/) | [live-composer/live-composer-page-builder](https://github.com/live-composer/live-composer-page-builder) | Free.
 
 For an easy solution with excellent flexibility, you can also use custom Shortcodes (the output of which you can manage very nicely with Timber / Twig). The downside is with migrating content to a different theme that does not know how to interpret them, but is it really better if the page builder just spews out very specific HTML markup?
 
