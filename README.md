@@ -157,3 +157,48 @@ Previously, you'd do this via hacks, but [starting from Wordpress 4.7](https://w
 #### [The WordPress Template Hierarchy](https://wphierarchy.com/)
 
 This is a useful visualization of how [Wordpress decides which template to use](https://developer.wordpress.org/themes/basics/template-hierarchy) when displaying content on your site. Could work as a poster!
+
+## Miscellaneous tips
+
+#### How to find which theme and plugins a WordPress website is using
+
+If you're curious about how other websites use WordPress, the page source can give a few hints. You can search for `wp-content/themes` and `wp-content/plugins` to see what's included. (Of course, this only works for WP websites that don't do CSS/JS bundling, or serve assets from CDNs). Here's a short snippet that you can paste into the browser Console to inspect a website for themes/plugins:
+
+```js
+function _match(str, regex) {
+	var matches = [];
+	str.replace(regex, function() {
+	    matches.push(Array.prototype.slice.call(arguments));
+	});
+	return matches;
+}
+
+function _unique(item, idx, arr) {
+	return arr.indexOf(item) === idx;
+}
+
+function find_themes(str) {
+	return _match(str, /wp\-content\/themes\/([^\/]+)/g)
+		.map(function(item) {
+			return item[1];
+		})
+		.filter(_unique);
+}
+
+function find_plugins(str) {
+	return _match(str, /wp\-content\/plugins\/([^\/]+)/g).map(function(item) {
+		return item[1];
+	})
+	.filter(_unique);
+}
+
+function inspect_wp() {
+ var html = document.documentElement.innerHTML;
+ console.table({
+ 	themes: find_themes(html),
+ 	plugins: find_plugins(html)
+ })
+}
+```
+
+Once you've identified the theme name, the path `/wp-content/themes/<theme-name>/style.css` will usually give you more information in the CSS header (this is also used by WordPress to display info about the theme).
