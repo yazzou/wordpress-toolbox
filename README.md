@@ -193,12 +193,14 @@ function find_plugins(str) {
 }
 
 function inspect_wp() {
- var html = document.documentElement.innerHTML;
- console.table({
- 	themes: find_themes(html),
- 	plugins: find_plugins(html)
- })
+	var html = document.documentElement.innerHTML;
+	console.info('Found themes:');
+	console.table(find_themes(html));
+	console.info('Found plugins:');
+	console.table(find_plugins(html));
 }
+
+inspect_wp();
 ```
 
 Once you've identified the theme name, the path `/wp-content/themes/<theme-name>/style.css` will usually give you more information in the CSS header (this is also used by WordPress to display info about the theme).
