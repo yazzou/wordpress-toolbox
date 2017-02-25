@@ -76,6 +76,8 @@ For an easy solution with excellent flexibility, you can also use custom Shortco
 
 __Further reading:__ [WordPress Page builder plugins: a critical review](https://pippinsplugins.com/wordpress-page-builder-plugins-critical-review/) is a thoughtful & thorough article.
 
+[Aesop Story Engine](http://aesopstoryengine.com/) seems to be a lightweight page builder tool specifically geared towards storytelling.
+
 ## Starter Themes
 
 #### [\_s](https://github.com/Automattic/_s)
