@@ -161,6 +161,30 @@ Previously, you'd do this via hacks, but [starting from Wordpress 4.7](https://w
 
 This is a useful visualization of how [Wordpress decides which template to use](https://developer.wordpress.org/themes/basics/template-hierarchy) when displaying content on your site. Could work as a poster!
 
+## Wordpress limitations about which I found the hard way
+
+#### You can't nest pages of a type under pages of another type
+
+Bummeriño :(
+
+#### You can't use a shortcode inside itself
+
+For example, if you were to build a layout system using shortcodes, you could not do this:
+
+```
+[row]
+  [col]
+    [row] ... [/row]
+  [/col]
+[/row]
+```
+
+The workaround, as far as I can tell now, is to register the same shortcode under different names.
+
+#### `wpautop` will mess up your shortcodes
+
+[`wpautop`](https://developer.wordpress.org/reference/functions/wpautop/) is great; it will replace all double line-breaks with paragraph elements. It will also mess up the markup of your shortcodes. [Some sort of workaround exists](https://wp-mix.com/wordpress-disable-extra-p-tags-shortcodes/), but it's not clear what the side-effects of the change are.
+
 ## Miscellaneous tips
 
 #### How to find which theme and plugins a WordPress website is using
