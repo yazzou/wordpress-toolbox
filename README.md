@@ -55,6 +55,22 @@ Until Wordpress makes it easier to order posts of the same type (right now we're
 
 Although people seem to be using [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) for this purpose, I appreciated that this plugin worked out of the box with decent results.
 
+### Page Builders
+
+Page builders let you build the content of your page or post as a series of sections in a visual way. What I'm looking for is a _light_ page builder that can work with _controlled_ sections (i.e. allow _some_ flexibility, but only use components I've defined). Here's a list of plugins that seem to be popular:
+
+Name | WP Plugin | GitHub repo | Notes
+---- | --------- | ----------- | -----
+[SiteOrigin Page Builder](https://siteorigin.com/page-builder/) | [siteorigin-panels](https://wordpress.org/plugins/siteorigin-panels/) | [siteorigin/siteorigin-panels](https://github.com/siteorigin/siteorigin-panels) | Entirely free and comes with a [widgets bundle](https://wordpress.org/plugins/so-widgets-bundle/) ([GitHub](https://github.com/siteorigin/so-widgets-bundle))
+[Elementor](https://elementor.com/) | [elementor](https://wordpress.org/plugins/elementor/) | [pojome/elementor](https://github.com/pojome/elementor) | Free and paid versions. I assume the GitHub repo and WordPress listing refer to the free version.
+[Beaver Builder](https://www.wpbeaverbuilder.com/) | [beaver-builder-lite-version](https://wordpress.org/plugins/beaver-builder-lite-version/) | N/A | Free and paid versions.
+[Visual Composer](https://vc.wpbakery.com/) | N/A | N/A | Paid-only. #1 paid plugin on CodeCanyon.
+[Advanced Custom Fields](https://www.advancedcustomfields.com/) | [advanced-custom-fields](https://wordpress.org/plugins/advanced-custom-fields/) | N/A | Free and paid versions. The paid versions contains a _Flexible content_ field that can be used as a page builder.
+
+For an easy solution with excellent flexibility, you can also use custom Shortcodes (the output of which you can manage very nicely with Timber / Twig). The downside is with migrating content to a different theme that does not know how to interpret them, but is it really better if the page builder just spews out very specific HTML markup?
+
+(Also, I need to check out Widgets -- do they help?)
+
 ## Starter Themes
 
 #### [\_s](https://github.com/Automattic/_s)
