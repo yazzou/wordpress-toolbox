@@ -72,6 +72,8 @@ For an easy solution with excellent flexibility, you can also use custom Shortco
 
 (Also, I need to check out Widgets -- do they help?)
 
+__Further reading:__ [WordPress Page builder plugins: a critical review](https://pippinsplugins.com/wordpress-page-builder-plugins-critical-review/) is a thoughtful & thorough article.
+
 ## Starter Themes
 
 #### [\_s](https://github.com/Automattic/_s)
