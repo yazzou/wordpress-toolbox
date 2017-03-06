@@ -159,6 +159,40 @@ If you're using Timber to develop your theme, you can use the [`batch` filter](h
 
 Previously, you'd do this via hacks, but [starting from Wordpress 4.7](https://wordpress.org/news/2016/12/vaughan/) you can set the language for the dashboard independently from the website language by going to your _Profile_ settings in the administration interface.
 
+#### Using references to particular menus in the theme's templates
+
+When you have a single menu in your site, it's easy to just include it in your theme: just call [`wp_nav_menu()`](https://developer.wordpress.org/reference/functions/wp_nav_menu/) (or `new TimberMenu()` if you're using Timber), and you'll get the first available menu.
+
+If you have more than one menu defined, you'll need to refer to specific menus by referencing them by their ID, slug, or full name. Neither option is very nice: the menu's name might inadvertently change; and, consequently, its slug. If you hardcode the ID you'll need to change it for each website you use the code on. 
+
+But you can use the `menus` theme feature to [set up stable references to your menus](https://codex.wordpress.org/Navigation_Menus):
+
+```php
+// functions.php
+
+add_theme_support( 'menus' );
+
+// then:
+
+function register_my_menus() {
+  register_nav_menu('main-menu',__( 'Main Menu' ));
+  register_nav_menu('secondary-menu',__( 'Secondary Menu' ));
+}
+
+add_action( 'init', 'register_my_menus' );
+```
+
+This creates two _theme locations_ where the client can plug in their menus from the administration dashboard. And for us, the developer, it means we can call them by their location in our theme:
+
+```php
+// plain WordPress...
+<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+
+// ...or with Timber
+$context['menu'] = new TimberMenu('main-menu');
+$context['footer_menu] = new TimberMenu('footer-menu');
+```
+
 ## Resources
 
 #### [The WordPress Template Hierarchy](https://wphierarchy.com/)
