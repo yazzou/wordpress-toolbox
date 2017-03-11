@@ -193,6 +193,22 @@ $context['menu'] = new TimberMenu('main-menu');
 $context['footer_menu] = new TimberMenu('footer-menu');
 ```
 
+#### Redirecting to the first child of a page when visiting a parent page
+
+This can be done very elegantly with a Custom Page Template that you apply to your parent page.
+
+```php
+<?php
+/* Template Name: Redirect To First Child */
+$child_pages = get_pages( "child_of=" . $post->ID . "&sort_column=menu_order" );
+if ($child_pages) {
+    // get id of first child page
+    $firstchild = $child_pages[0];
+    wp_redirect( get_permalink( $firstchild->ID ) );
+}
+?>
+```
+
 ## Resources
 
 #### [The WordPress Template Hierarchy](https://wphierarchy.com/)
@@ -234,6 +250,14 @@ For the reason, see the _Limitations_ section of [the Shortcode API](https://cod
 #### `wpautop` will mess up your shortcodes
 
 [`wpautop`](https://developer.wordpress.org/reference/functions/wpautop/) is great; it will replace all double line-breaks with paragraph elements. It will also mess up the markup of your shortcodes. [Some sort of workaround exists](https://wp-mix.com/wordpress-disable-extra-p-tags-shortcodes/), but it's not clear what the side-effects of the change are.
+
+#### Uploaded images with accented characters in their filename will not load on certain browsers
+
+If you upload an image that has diacritical marks in its filename, it will display as [broken in some browsers](https://core.trac.wordpress.org/ticket/22363).
+
+#### Don't forget to check the upload limit in your server's configuration
+
+You don't want to launch with a (often default) 8mb file upload limit.
 
 ## Miscellaneous tips
 
