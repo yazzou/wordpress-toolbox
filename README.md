@@ -8,7 +8,7 @@ This is a compendium of Wordpress tips, tricks, tools and recipes I'm gathering 
 * [Starter themes](#starter-themes)
 * [Recipes](#recipes)
 * [Resources](#resources)
-* [Wordpress limitations about which I found the hard way](#wordpress-limitations-about-which-i-found-the-hard-way)
+* [Wordpress limitations and gotchas](#wordpress-limitations-and-gotchas)
 * [Miscellaneous Tips](#miscellaneous-tips)
 
 ## Plugins
@@ -216,6 +216,10 @@ if ($child_pages) {
 This is a useful visualization of how [Wordpress decides which template to use](https://developer.wordpress.org/themes/basics/template-hierarchy) when displaying content on your site. Could work as a poster!
 
 ## Wordpress limitations about which I found the hard way
+
+#### It can't work with images in Adobe RGB
+
+The built-in WordPress image editor (which gets invoked when you resize images) will read Adobe RGB images as sRGB and alter the colors. There doesn't seem to be a way to fix this from WP or a plugin, so the only thing you can do here is make sure your images are sRGB.
 
 #### You can't nest pages of a type under pages of another type
 
