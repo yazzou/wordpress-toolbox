@@ -209,6 +209,15 @@ if ($child_pages) {
 ?>
 ```
 
+#### Adjusting the quality of resized JPEG images
+
+```php
+add_filter('jpeg_quality`, 'adjust_jpeg_quality');
+function adjust_jpeg_quality() {
+  return 100; // 100% quality
+}
+```
+
 ## Resources
 
 #### [The WordPress Template Hierarchy](https://wphierarchy.com/)
@@ -259,9 +268,29 @@ For the reason, see the _Limitations_ section of [the Shortcode API](https://cod
 
 If you upload an image that has diacritical marks in its filename, it will display as [broken in some browsers](https://core.trac.wordpress.org/ticket/22363).
 
+__Note:__ Special characters in uploaded images can also cause problems when moving a WordPress site to a new host which may not support such filenames. 
+
 #### Don't forget to check the upload limit in your server's configuration
 
 You don't want to launch with a (often default) 8mb file upload limit.
+
+### Migration woes and trepidations
+
+Some of the things I discovered when moving a WordPress site to a new host.
+
+#### FTP is slow
+
+A WordPress site tends to have a myriad of minuscule files, the transfer of which is not FTPs greatest strength. A much faster alternative is to zip it all up and extract it in place on the server, provided that the host comes with the ability to unzip the file (cPanel-powered hosts will probably have it).
+
+#### Uploads with special characters in their filename can fail
+
+For some reason, the old host supported filenames for the uploaded images that the new one did not. When importing to the new host, the unzipping process (see above) failed silently midway. A call to Tech Support revealed that the source of the problem was a © sign in a filename.
+
+The solution was to rename the offending files, and make sure to replace any reference to it in the database. (I did a simple search and replace in the `database.sql` MySQL dump file before importing it).
+
+#### WPML hit by amnesia? Check the table collations
+
+Another head-scratcher was that on the new host WPML had deactivated and was inviting me to configure it from scratch. Turns out that a mismatch in the collations used for the various `icl_` MySQL tables was causing the issue. Adjusting all of them to the same `utf8_`-based collation fixed the problem.
 
 ## Miscellaneous tips
 
