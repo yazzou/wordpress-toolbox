@@ -10,7 +10,23 @@ You create your navigation menus in <kbd>Appearance > Menus</kbd>. You have many
 
 ### Solution
 
-Until WordPress resolves this issue, [there's a small plugin](https://core.trac.wordpress.org/attachment/ticket/18282/preserve-page-and-taxonomy-hierarchy.php) that fixes the issue by disabling the pagination on that list of items — this makes them nest properly.
+Until WordPress resolves this issue, [there's a small plugin](https://core.trac.wordpress.org/attachment/ticket/18282/preserve-page-and-taxonomy-hierarchy.php) that fixes the issue by disabling the pagination on that list of items — this makes them nest properly. 
+
+I prefer a cleaner solution, though:
+
+```php
+
+  // functions.php
+
+  add_filter( 'nav_menu_meta_box_object', array( $this, 'disable_pagination_in_menu_meta_box' ) );
+
+	function disable_pagination_in_menu_meta_box($obj) {
+		$obj->_default_query = array(
+			'posts_per_page' => -1
+		);
+		return $obj;
+	}
+```
 
 ## Can't work with images in Adobe RGB
 
