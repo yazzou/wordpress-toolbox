@@ -2,6 +2,10 @@
 
 This is a compendium of Wordpress tips, tricks, tools and recipes I'm gathering while I'm learning how to use it. Also check out [the Wiki](https://github.com/danburzo/wordpress-toolbox/wiki), which acts as a purgatory for half-formed ideas before they make it here.
 
+## A note on the content
+
+[This material is AWL](https://github.com/danburzo/as-we-learn).
+
 ## Table of Contents
 
 * [Plugins](#plugins)
