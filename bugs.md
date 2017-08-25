@@ -18,7 +18,7 @@ I prefer a cleaner solution, though:
 
   // functions.php
 
-  add_filter( 'nav_menu_meta_box_object', array( $this, 'disable_pagination_in_menu_meta_box' ) );
+  add_filter( 'nav_menu_meta_box_object', 'disable_pagination_in_menu_meta_box', 9 );
 
 	function disable_pagination_in_menu_meta_box($obj) {
 		$obj->_default_query = array(
