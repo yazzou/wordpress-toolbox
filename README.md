@@ -12,7 +12,7 @@ This is a compendium of Wordpress tips, tricks, tools and recipes I'm gathering 
 * [Starter themes](#starter-themes)
 * [Recipes](#recipes)
 * [Resources](#resources)
-* [Wordpress limitations and gotchas](#wordpress-limitations-and-gotchas)
+* [Wordpress limitations and gotchas](./bugs.md) — Separate page
 * [Miscellaneous Tips](#miscellaneous-tips)
 
 ## Plugins
@@ -60,6 +60,12 @@ Until Wordpress makes it easier to order posts of the same type (right now we're
 > Inserts Facebook Open Graph, Google+/Schema.org, Twitter and SEO Meta Tags into your WordPress Website for more efficient sharing results. 
 
 Although people seem to be using [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) for this purpose, I appreciated that this plugin worked out of the box with decent results.
+
+#### [Google XML Sitemaps](https://wordpress.org/plugins/google-sitemap-generator/)
+
+> Use this plugin to greatly improve SEO to create special XML sitemaps which will help search engines like Google, Bing, Yahoo and Ask.com to better index your site.
+
+This popular plugin will help you create your `sitemap.xml` which Google and other crawlers use. Be sure to go to its Settings page and check any Custom Post Types / taxonomies / archives you might want included in the sitemap.
 
 ### Page Builders
 
@@ -227,10 +233,6 @@ function adjust_jpeg_quality() {
 #### [The WordPress Template Hierarchy](https://wphierarchy.com/)
 
 This is a useful visualization of how [Wordpress decides which template to use](https://developer.wordpress.org/themes/basics/template-hierarchy) when displaying content on your site. Could work as a poster!
-
-## Wordpress limitations about which I found the hard way
-
-[Moved to its own separate page](./bugs.md), as they seem to be piling up these days...
 
 ## Miscellaneous tips
 
