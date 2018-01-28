@@ -129,3 +129,23 @@ The solution was to rename the offending files, and make sure to replace any ref
 #### WPML hit by amnesia? Check the table collations
 
 Another head-scratcher was that on the new host WPML had deactivated and was inviting me to configure it from scratch. Turns out that a mismatch in the collations used for the various `icl_` MySQL tables was causing the issue. Adjusting all of them to the same `utf8_`-based collation fixed the problem.
+
+## WordPress and `robots.txt`
+
+### Background
+
+On one of the websites I was managing the client informed me only the HTTPS version of the website showed up — mind you, the website did in fact _not_ have a valid HTTPS certificate, so this was very bizarre — and through some panicky digging around I found the `robots.txt` file disallowed search engines to crawl the website. There was no `robots.txt` file on the server.
+
+### Problem
+
+WordPress uses a _virtual_ `robots.txt` file that is generated on the fly, and which plugins can hook into to add their own things.
+
+Additionally, in <kbd>Settings > Reading</kbd>, WordPress has a <kbd>Discourage search engines from indexing this site</kbd> checkbox which, to my dismay, was somehow checked (either by someone else or, one can assume, from an upgrade process?), and which caused the virtual `robots.txt` to disallow search engines from crawling the website. 
+
+### Solution
+
+1. __Never check__ <kbd>Discourage search engines from indexing this site</kbd>, unless you want to destroy your SEO ranking.
+2. __Don't add a physical `robots.txt`__ to your disk, just let WordPress manage it. 
+3. __Use a plugin__ such as [Google XML Sitemaps](https://wordpress.org/plugins/google-sitemap-generator/)<sup>1</sup> to generate a `sitemap.xml` and add it automatically to `robots.txt`. 
+
+<sup>1</sup> In fact, it was this plugin that alerted me that the damned checkbox was checked, and that there exists a physical `robots.txt` file on the server (which I had created out of panic before I figured out what's going on) — cheers to the developer for that!
