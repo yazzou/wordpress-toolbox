@@ -149,3 +149,14 @@ Additionally, in <kbd>Settings > Reading</kbd>, WordPress has a <kbd>Discourage 
 3. __Use a plugin__ such as [Google XML Sitemaps](https://wordpress.org/plugins/google-sitemap-generator/)<sup>1</sup> to generate a `sitemap.xml` and add it automatically to `robots.txt`. 
 
 <sup>1</sup> In fact, it was this plugin that alerted me that the damned checkbox was checked, and that there exists a physical `robots.txt` file on the server (which I had created out of panic before I figured out what's going on) — cheers to the developer for that!
+
+## Advanced Custom Fields
+
+### Custom Fields metabox disappeared
+
+#### Solution 
+
+```php
+// functions.php
+add_filter('acf/settings/remove_wp_meta_box', '__return_false');
+```
