@@ -67,6 +67,11 @@ Although people seem to be using [Yoast SEO](https://wordpress.org/plugins/wordp
 
 This popular plugin will help you create your `sitemap.xml` which Google and other crawlers use. Be sure to go to its Settings page and check any Custom Post Types / taxonomies / archives you might want included in the sitemap.
 
+#### [WP User Avatar](https://wordpress.org/plugins/wp-user-avatar/)
+
+> WordPress currently only allows you to use custom avatars that are uploaded through Gravatar. WP User Avatar enables you to use any photo uploaded into your Media Library as an avatar.
+
+
 ### Page Builders
 
 Page builders let you build the content of your page or post as a series of sections in a visual way. What I'm looking for is a _light_ page builder that can work with _controlled_ sections (i.e. allow _some_ flexibility, but only use components I've defined). Here's a list of plugins that seem to be popular:
